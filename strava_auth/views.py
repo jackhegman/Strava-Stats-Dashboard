@@ -3,6 +3,8 @@ from django.contrib.auth import logout, login
 from django.contrib.auth.models import User
 from django.shortcuts import redirect
 from django.utils.http import urlencode
+from rest_framework.authentication import SessionAuthentication
+from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
@@ -20,6 +22,9 @@ class UserView(APIView):
 
 
 class UserLogoutView(APIView):
+    authentication_classes = [SessionAuthentication]
+    permission_classes = [IsAuthenticated]
+
     def post(self, request, *args, **kwargs):
         if request.user:
             logout(request)
@@ -43,7 +48,6 @@ class StravaAuthView(APIView):
             return redirect(settings.FRONT_END_URL)
         else:
             redirect_url = self._get_redirect_url()
-            # redirect
             return Response({"redirect_url": redirect_url})
 
     def _get_redirect_url(self):

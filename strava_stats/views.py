@@ -1,5 +1,4 @@
 import time
-from urllib.parse import urlencode
 
 import requests
 from requests import HTTPError
@@ -24,14 +23,12 @@ class StravaStatsView(APIView):
 
 class StravaClient:
     API_URL = 'https://www.strava.com/api/v3'
-    ACTIVITY_URL = 'https://www.strava.com/activities/'
     TOKEN_URL = 'https://www.strava.com/oauth/token'
 
     def __init__(self, strava_token):
         self.strava_token = strava_token
-        self.uid = strava_token.uid
 
-    def load_token(self):
+    def _load_token(self):
         if time.time() > self.strava_token.expires_at:
             return self.refresh_token()
         else:
@@ -55,7 +52,7 @@ class StravaClient:
         return self.strava_token.access_token
 
     def _api_request(self, endpoint):
-        token = self.load_token()
+        token = self._load_token()
         headers = {
             "Authorization": 'Bearer {}'.format(token)}
         url = f'{self.API_URL}/{endpoint}'

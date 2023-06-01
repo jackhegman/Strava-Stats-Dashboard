@@ -3,7 +3,7 @@ import { ApiClient } from "./ApiClient"
 import { OAuthRediectUrl } from "./Types";
 
 export const Login = () => {
-    const client = useMemo(() => ApiClient(), []);
+    const client = useMemo(ApiClient, []);
 
     const onLogin = async () => {
         const data = await client.get("auth/login/");

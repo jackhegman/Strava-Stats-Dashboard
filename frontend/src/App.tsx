@@ -7,7 +7,7 @@ import { User } from './Types';
 import { NavBar } from './NavBar';
 
 function App() {
-  const client = useMemo(() => ApiClient(), []);
+  const client = useMemo(ApiClient, []);
   const [user, setUser] = useState<User | undefined>();
   const [loading, setLoading] = useState<boolean>(true);
 
@@ -19,7 +19,7 @@ function App() {
       setUser(undefined);
       setLoading(false);
     });
-  }, []);
+  }, [client]);
 
   return (
     <div className="App">

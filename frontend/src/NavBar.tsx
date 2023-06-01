@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction, useMemo } from "react";
+import { SetStateAction, useMemo } from "react";
 import { ApiClient } from "./ApiClient";
 import { User } from "./Types";
 import React from "react";
@@ -9,7 +9,7 @@ interface NavBarProps {
 }
 
 export const NavBar = (props: NavBarProps) => {
-    const client = useMemo(() => ApiClient(), []);
+    const client = useMemo(ApiClient, []);
     const { user, setUser } = props;
 
     const logoutUser = () => {
