@@ -1,0 +1,114 @@
+body {
+  margin: 0
+}
+
+.landing-page {
+  color: white;
+  text-align: center;
+  align-items: center;
+  background-position: 50% 50%;
+  background-image: url("/src/img/landing.jpeg");
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.landing-page::before {
+  background: linear-gradient(to right,
+      rgba(0, 0, 0, 0.9) 0,
+      transparent 100%);
+  bottom: 0;
+  content: "";
+  height: 100%;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 100%;
+}
+
+.content-wrap {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  padding: 20px;
+  position: relative;
+  z-index: 10;
+}
+
+.btn-strava {
+  background: #fc4c02;
+  border: 1px solid;
+  padding: 10px;
+  color: white;
+  text-decoration: none;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+.top-nav {
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-right: 10px;
+}
+
+.top-nav p {
+  margin-left: 10px;
+}
+
+
+#loading {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  border: 3px solid rgba(255, 255, 255, .3);
+  border-radius: 50%;
+  border-top-color: #fff;
+  animation: spin 1s ease-in-out infinite;
+  -webkit-animation: spin 1s ease-in-out infinite;
+  background: #fc4c02;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+}
+
+@keyframes spin {
+  to {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@-webkit-keyframes spin {
+  to {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+.stat-table {
+  margin-top: 10px;
+}
+
+.load-more-btn {
+  display: flex;
+  justify-content: center;
+}
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td,
+th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
